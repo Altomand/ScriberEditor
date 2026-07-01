@@ -1,0 +1,81 @@
+- !<AssetImportMetadata/60c254b1-ac4e-4554-aa86-df140ae9fe09>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 82f620fa-f108-4c92-92e0-5809416c361d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 82f620fa-f108-4c92-92e0-5809416c361d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e54fc94e-4333-4d55-8fa8-fd7148eeae4b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e54fc94e-4333-4d55-8fa8-fd7148eeae4b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1ac272c7-ed2a-46ee-89cb-6e4538d3f0a7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cursorBlinkInterval: false
+    cursorChar: false
+    cursorOffChar: false
+    debugGrid: false
+    debugGridRows: false
+    debugGridWidth: false
+    editorText: false
+    emptyHint: false
+    lineHeight: false
+    maxLineWidth: false
+    scrollContentTransform: false
+    scrollView: false
+    scrollWindow: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - editorText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      scrollWindow: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      scrollView: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      scrollContentTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
+      lineHeight: 1.500000
+      maxLineWidth: !<float> 45.000000
+      cursorChar: █
+      cursorOffChar: ▒
+      cursorBlinkInterval: 0.500000
+      emptyHint: |2-
+         ← start typing
+      debugGrid: false
+      debugGridWidth: !<float> 50.000000
+      debugGridRows: !<float> 40.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text editorText {"hint":"The Text component that displays typed content"}'
+    - '// @input AssignableType scrollWindow {"hint":"UIKit ScrollWindow component (preferred). Wire this OR the SIK pair below."}'
+    - '// @input AssignableType_1 scrollView {"hint":"LEGACY: SIK ScrollView component. Used only if scrollWindow is not wired."}'
+    - '// @input Component.ScreenTransform scrollContentTransform {"hint":"LEGACY: ScreenTransform of the SIK scroll content wrapper. Used only with scrollView."}'
+    - '// @input float lineHeight = 1.5 {"hint":"Line height in local units for scroll calculation (SIK path only)"}'
+    - '// @input float maxLineWidth = 45 {"hint":"Max characters per line before wrapping"}'
+    - '// @input string cursorChar = "█" {"hint":"Cursor character when visible. Common: █ (block), ▮ (filled rect), | (line), _ (underscore)"}'
+    - "// @input string cursorOffChar = \"▒\" {\"hint\":\"Cursor character when blinked off. MUST be same rendered width as cursorChar to avoid wrap-bounce. Try ▒ or ░ for a pulsing block cursor; ▯ for hollow-rect blink; or '' (empty) to keep cursor solid (no blink).\"}"
+    - '// @input float cursorBlinkInterval = 0.5 {"hint":"Cursor blink interval in seconds"}'
+    - '// @input string emptyHint = "  start typing" {"hint":"Visible-only hint shown between content and the cursor on a fresh / cleared buffer. Disappears as soon as the user types anything (controller calls setHint(false) on every keypress). NOT saved to the buffer. Empty string to disable."}'
+    - '// @input bool debugGrid {"hint":"DEBUG: fill the editor with a checker grid so layout can be inspected in Preview without BLE. Ignores setContent() while on."}'
+    - '// @input float debugGridWidth = 50 {"hint":"DEBUG: characters per row in the grid"}'
+    - '// @input float debugGridRows = 40 {"hint":"DEBUG: number of rows in the grid"}'

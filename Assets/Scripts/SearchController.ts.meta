@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/0069f655-858b-413e-a36f-7980ecf34568>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d1aec725-b862-4c47-a901-238c0d403c80
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d1aec725-b862-4c47-a901-238c0d403c80
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ffae65a2-67e6-48b8-bd8d-ad8bf909aff7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ffae65a2-67e6-48b8-bd8d-ad8bf909aff7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 05d9b691-4cc8-47b6-b954-96f09d582404
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    asrModule: false
+    docsList: false
+    micButton: false
+    micTexture: false
+    newDocButton: false
+    searchInputHost: false
+    uiTextureMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - docsList: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      searchInputHost: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      micButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      newDocButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      micTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      asrModule: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType docsList
+    - '// @input SceneObject searchInputHost {"hint":"Optional host SceneObject of the search TextInputField"}'
+    - // @input SceneObject micButton
+    - // @input SceneObject newDocButton
+    - '// @input Asset.Material uiTextureMaterial {"hint":"Transparent-unlit material (e.g. EmojiCool) — cloned to paint the mic icon"}'
+    - '// @input Asset.Texture micTexture {"hint":"Texture: white mic icon"}'
+    - '// @input AssignableType_1 asrModule {"hint":"ASR module asset for mic speech-to-text"}'

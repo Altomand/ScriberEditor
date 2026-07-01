@@ -1,0 +1,73 @@
+- !<ObjectPrefab/522af56f-b271-4b36-a14b-c9bb9f2ea0b9>
+  PackagePath: ""
+  objects:
+    - !<own> 55810b9e-a35a-4367-b12a-49ea4d44ac28
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/55810b9e-a35a-4367-b12a-49ea4d44ac28>
+  PrefabRemaps:
+    - 55810b9e-a35a-4367-b12a-49ea4d44ac28: 55810b9e-a35a-4367-4ed5-b615b2bb53d7
+    - 5da2b8ba-1d1b-4aa9-b12e-db248c862768: 5da2b8ba-1d1b-4aa9-4ed1-24db7379d897
+  Name: EditOverlayInput_BUILD
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5da2b8ba-1d1b-4aa9-b12e-db248c862768
+- !<ScriptComponent/5da2b8ba-1d1b-4aa9-b12e-db248c862768>
+  PrefabRemaps:
+    []
+  Name: TextInputField
+  Enabled: true
+  ScriptAsset: !<reference> af79fabe-6fbd-46c3-8b98-0fd7b687282c
+  ScriptInputsDefault:
+    _renderOrder: true
+    _size: true
+    _inactive: true
+    _playAudio: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    inputType: true
+    formatType: true
+    fontFamily: true
+    useIcon: true
+    icon: true
+    changeIconOnFocus: true
+    alternateIcon: true
+    contentRequiredOnDeactivate: true
+    addCallbacks: true
+    onTextChangedCallbacks: true
+    onKeyboardStateChangedCallbacks: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 0
+      _size: !<Vec3> {x: 30.000000, y: 6.000000, z: 0.000000}
+      _inactive: false
+      _playAudio: false
+      _hasShadow: true
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      inputType: default
+      formatType: date
+      placeholderText: Edit…
+      fontFamily: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      useIcon: false
+      icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      changeIconOnFocus: false
+      alternateIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      contentRequiredOnDeactivate: false
+      addCallbacks: false
+      onTextChangedCallbacks:
+        []
+      onKeyboardStateChangedCallbacks:
+        []
+  ScriptTypes:
+    "":
+      {}

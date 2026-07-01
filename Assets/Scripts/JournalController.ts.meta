@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/1f2ec3e7-4783-4059-b44f-bae81299f28b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6e897278-9865-41ee-8910-8b69e5c75d94
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6e897278-9865-41ee-8910-8b69e5c75d94
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0e215092-4ab7-4db9-a30c-25f4dda1221e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0e215092-4ab7-4db9-a30c-25f4dda1221e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f38dff26-d0e5-4144-8a06-31439576fe80
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bleKeyboard: false
+    documentManager: false
+    editor: false
+    inputMode: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bleKeyboard: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      editor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      documentManager: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      inputMode: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType bleKeyboard
+    - '// @input AssignableType_1 editor {"hint":"ScrollableTextEditor view component"}'
+    - '// @input AssignableType_2 documentManager {"hint":"DocumentManager that owns the current document buffer"}'
+    - '// @input AssignableType_3 inputMode {"hint":"InputModeManager. Keypresses are only applied while in TYPING mode."}'

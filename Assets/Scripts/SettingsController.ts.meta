@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/6293ea0f-4c61-4764-b896-33533b8ecbfe>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 50c5e94d-f068-4454-be3c-fa3391978324
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 50c5e94d-f068-4454-be3c-fa3391978324
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> de3d5363-6eab-4b57-b97d-de0d39d4bcb5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/de3d5363-6eab-4b57-b97d-de0d39d4bcb5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 79dcf817-64cd-463e-9d16-dc503cf61c28
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    documentManager: false
+    editorText: false
+    fontMax: false
+    fontMin: false
+    fontSizeSliderHost: false
+    layoutEditor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - editorText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      fontSizeSliderHost: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      fontMin: !<float> 24.000000
+      fontMax: !<float> 52.000000
+      documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      layoutEditor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text editorText {"hint":"Editor text component (font size is applied here)"}'
+    - '// @input SceneObject fontSizeSliderHost {"hint":"Host of a SUIK Slider for font size (duck-typed onValueChanged 0..1)"}'
+    - // @input float fontMin = 24
+    - // @input float fontMax = 52
+    - // @input AssignableType documentManager
+    - // @input AssignableType_1 layoutEditor

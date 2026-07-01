@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/a4c01386-9515-4b43-95d3-8da5a59712a5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 94b5cb40-d66e-49fb-9d95-d1c5d0e62357
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 94b5cb40-d66e-49fb-9d95-d1c5d0e62357
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6ba8805e-316c-4d96-8156-a62be516bf38
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6ba8805e-316c-4d96-8156-a62be516bf38>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5f2983a2-a86c-45da-9605-a72a3845b009
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bluetoothCentralModule: false
+    keyboardAddress: false
+    keyboardName: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bluetoothCentralModule: !<reference.BluetoothCentralModule> 00000000-0000-0000-0000-000000000000
+      keyboardName: M5-Keyboard-Mouse
+      keyboardAddress: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.BluetoothCentralModule bluetoothCentralModule
+    - '// @input string keyboardName = "Skywriter" {"hint":"BLE device name to scan for"}'
+    - '// @input string keyboardAddress {"hint":"Optional: BLE address override (comma-separated decimal bytes)"}'

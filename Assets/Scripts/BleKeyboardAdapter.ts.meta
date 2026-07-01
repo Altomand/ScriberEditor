@@ -1,0 +1,78 @@
+- !<AssetImportMetadata/a29aee73-b031-4737-9933-56318af6defc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3232a1af-ca61-4b91-a141-e649634ce6c3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3232a1af-ca61-4b91-a141-e649634ce6c3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3afefebc-3e90-495f-8565-4de82c8922c0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3afefebc-3e90-495f-8565-4de82c8922c0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f1b0682d-cb38-4cb7-80bc-6618b7b6406a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audioToggle: false
+    batteryLevelText: false
+    bleKeyboard: false
+    chatWindowText: false
+    connectedBluetoothObj: false
+    keyboardNameText: false
+    keypressAudio: false
+    keypressCountText: false
+    scanningBluetoothObj: false
+    wordCountText: false
+    wpmText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bleKeyboard: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      connectedBluetoothObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scanningBluetoothObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      keyboardNameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      chatWindowText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      keypressCountText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      wpmText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      wordCountText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      batteryLevelText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      keypressAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      audioToggle: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType bleKeyboard
+    - '// @ui {"widget":"separator"}'
+    - // @input SceneObject connectedBluetoothObj
+    - // @input SceneObject scanningBluetoothObj
+    - // @input Component.Text keyboardNameText
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.Text chatWindowText {"hint":"Text component to display typed keypresses"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.Text keypressCountText {"hint":"Displays total keypress count"}'
+    - '// @input Component.Text wpmText {"hint":"Displays words per minute"}'
+    - '// @input Component.Text wordCountText {"hint":"Displays word count"}'
+    - '// @input Component.Text batteryLevelText {"hint":"Displays battery level percentage"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.AudioComponent keypressAudio {"hint":"AudioComponent that plays the typewriter keypress sound"}'
+    - '// @input AssignableType_1 audioToggle {"hint":"Optional: Toggle button to enable/disable keypress audio"}'

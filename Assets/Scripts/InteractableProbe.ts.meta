@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/edd37edb-a3ee-4c33-9010-dd93f40bf137>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1687e34d-ac94-4433-8689-85eea4ceffb3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1687e34d-ac94-4433-8689-85eea4ceffb3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7be44edc-c2a1-45a0-8497-ebb9480cee1c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7be44edc-c2a1-45a0-8497-ebb9480cee1c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 381c849d-07ce-45dc-81e1-815d0198381b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    interactable: false
+    label: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - interactable: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      label: probe
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType interactable {"hint":"SIK Interactable component on this same SceneObject"}'
+    - '// @input string label = "probe" {"hint":"A label to identify this probe in the Logger output"}'

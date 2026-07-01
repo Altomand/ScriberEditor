@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/8105a103-1311-4de7-943f-067ffbbaeeda>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2d4e628e-3316-4c5e-a246-32077f557571
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2d4e628e-3316-4c5e-a246-32077f557571
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 84ca8395-aa76-43cc-8f38-5c54cf604947
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/84ca8395-aa76-43cc-8f38-5c54cf604947>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ba4ad892-e923-4688-af9a-6f4f187c8778
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    labelText: false
+    listRoot: false
+    optionRowPrefab: false
+    rowFont: false
+    rowFontSize: false
+    rowSpacing: false
+    toggleButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - labelText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      toggleButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      listRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      optionRowPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      rowFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      rowFontSize: !<float> 26.000000
+      rowSpacing: !<float> 6.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text labelText {"hint":"Text showing the current selection"}'
+    - '// @input SceneObject toggleButton {"hint":"Button SceneObject that opens/closes the list"}'
+    - '// @input SceneObject listRoot {"hint":"Container whose .enabled toggles the option list"}'
+    - '// @input Asset.ObjectPrefab optionRowPrefab {"hint":"Deprecated/unused — rows are built at runtime. Kept optional for compatibility."}'
+    - '// @input Asset.Font rowFont {"hint":"Font for option rows"}'
+    - // @input float rowFontSize = 26
+    - '// @input float rowSpacing = 6 {"hint":"Vertical spacing between option rows (local units)"}'

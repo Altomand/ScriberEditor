@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/e51247f2-ed68-42e2-bc48-12a7d2862702>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 97f5df38-3a5f-4257-9508-9183f77cf28a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 97f5df38-3a5f-4257-9508-9183f77cf28a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 63b92c27-2266-4694-9c8b-ee959eac4078
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/63b92c27-2266-4694-9c8b-ee959eac4078>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a7acd134-b8ca-4000-ab10-517244cc9cd1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autosaveDelay: false
+    cloudStore: false
+    sessionHeading: false
+    sessionTags: false
+    timezone: false
+    useCloud: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cloudStore: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      useCloud: true
+      autosaveDelay: 1.500000
+      sessionHeading: Note
+      sessionTags: skywriterble
+      timezone: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType cloudStore {"hint":"Optional CloudDocumentStore component (Supabase). If unset, local-only."}'
+    - '// @input bool useCloud = true {"hint":"Save documents to the cloud store when available"}'
+    - '// @input float autosaveDelay = 1.5 {"hint":"Seconds of idle before autosaving an already-saved document"}'
+    - "// @input string sessionHeading = \"Note\" {\"hint\":\"Heading title for new documents (org-mode '* ' headline)\"}"
+    - '// @input string sessionTags = "skywriterble" {"hint":"Org-mode tags for new headings, colon-delimited without surrounding colons"}'
+    - '// @input string timezone {"hint":"Optional timezone override; empty uses the device UTC offset"}'

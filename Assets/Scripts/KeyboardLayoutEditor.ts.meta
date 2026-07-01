@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/27464e95-d228-40e9-8f77-4adcaf51642f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ae277eb7-c5fb-419e-a422-571d31b2d211
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ae277eb7-c5fb-419e-a422-571d31b2d211
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8800467c-1635-42f0-9e01-36fd98a5e9b0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8800467c-1635-42f0-9e01-36fd98a5e9b0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b21c5495-9e54-470a-b840-11ac37e131e1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    applyButton: false
+    dropdownA: false
+    dropdownB: false
+    virtualKeyboard: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - dropdownA: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      dropdownB: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      applyButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      virtualKeyboard: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType dropdownA
+    - // @input AssignableType_1 dropdownB
+    - '// @input SceneObject applyButton {"hint":"Button that applies the swap"}'
+    - // @input AssignableType_2 virtualKeyboard

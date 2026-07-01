@@ -1,0 +1,35 @@
+# --- Custom (kept above the Lens Studio managed block) ---
+# Secrets: never commit the Supabase project asset (contains project URL + anon PublicToken).
+# Cloud sync is optional / bring-your-own — see README. The app runs local-only without it.
+*.supabaseProject
+*.supabaseProject.meta
+
+# Scriber controller firmware / protocol — kept private (not for public release).
+firmware/
+
+# Legacy Skywriter/M5-era design docs — kept local, not published (outdated vs Scriber).
+/BLE-HID-Keyboard-for-spectacles.md
+/DESIGN.md
+/DESIGN-SCROLLWINDOW.md
+/docs/NICE-NANO-ZMK.md
+/docs/VIRTUAL-KEYBOARD.md
+/CHANGELOG.md
+
+# Shipped by Lens Studio
+
+# The lines below are automatically generated and updated by Lens Studio.
+# Please do not modify them manually, as changes will be overwritten each time!
+# If you want to make changes to this file, please put them either above or below this section.
+
+Cache/**
+PluginsUserPreferences/**
+Support/**
+BackUp/**
+Workspaces/**
+.vscode/
+/jsconfig.json
+/tsconfig.json
+.DS_Store
+*.lock
+
+# Shipped by Lens Studio

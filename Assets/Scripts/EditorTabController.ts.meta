@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/0c7a422b-0bcd-42b4-826a-0c618d857c80>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6a601d54-9013-4eb9-8712-73f95b97c4a5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6a601d54-9013-4eb9-8712-73f95b97c4a5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 994b6c0d-9d69-4419-83bf-d23043fd1cf4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/994b6c0d-9d69-4419-83bf-d23043fd1cf4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2ecee861-07ad-4318-a493-6d81c1e6583e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonParent: false
+    docIconTex: false
+    documentManager: false
+    editor: false
+    inputMode: false
+    labelFont: false
+    pillTex: false
+    saveIconTex: false
+    uiTextureMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      editor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      inputMode: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      buttonParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      docIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      saveIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      pillTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      labelFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType documentManager
+    - // @input AssignableType_1 editor
+    - // @input AssignableType_2 inputMode
+    - '// @input SceneObject buttonParent {"hint":"Parent the round buttons are built under (the Editor view root)"}'
+    - '// @input Asset.Material uiTextureMaterial {"hint":"Any transparent-unlit UI material (e.g. the EmojiCool material) — cloned per button, baseTex swapped"}'
+    - '// @input Asset.Texture docIconTex {"hint":"Texture: white document icon (New Doc button)"}'
+    - '// @input Asset.Texture saveIconTex {"hint":"Texture: white save icon (Save button)"}'
+    - '// @input Asset.Texture pillTex {"hint":"Texture: pill background for the All Docs / My Docs choice buttons"}'
+    - '// @input Asset.Font labelFont {"hint":"Font for the choice button labels"}'

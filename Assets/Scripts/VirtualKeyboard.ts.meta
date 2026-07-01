@@ -1,0 +1,86 @@
+- !<AssetImportMetadata/dd502eb2-9428-45ad-81ec-16a848f78f37>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c00d7e28-3319-4a3e-b5da-8ccdda312e7b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c00d7e28-3319-4a3e-b5da-8ccdda312e7b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2f056ff4-014b-45b8-8583-da6c272518d9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2f056ff4-014b-45b8-8583-da6c272518d9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: bb51f1cf-fbb4-47b5-911b-46557a7d34b6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    backplateMaterial: false
+    bgColor: false
+    bgScale: false
+    bgZ: false
+    bleKeyboard: false
+    colSpacing: false
+    keyFont: false
+    keySize: false
+    panelBackgroundMaterial: false
+    plusMaterial: false
+    plusSize: false
+    plusTexture: false
+    rowSpacing: false
+    sectionSpread: false
+    simulate: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bleKeyboard: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      simulate: true
+      backplateMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      panelBackgroundMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      bgColor: !<Vec4> {x: 0.120000, y: 0.120000, z: 0.140000, w: 0.920000}
+      bgScale: !<float> 14.000000
+      bgZ: 0.500000
+      plusTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      plusMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      plusSize: 1.850000
+      keyFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      keySize: !<float> 28.000000
+      colSpacing: 0.130000
+      rowSpacing: 0.170000
+      sectionSpread: 0.620000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType bleKeyboard {"hint":"Scriber/BLE keyboard source for selection + commit events"}'
+    - '// @input bool simulate = true {"hint":"Run an auto-demo in preview (no hardware needed)"}'
+    - "// @input Asset.Material backplateMaterial {\"hint\":\"Material for the plus background mesh (an unlit material, e.g. the app's UIBox/flat material)\"}"
+    - "// @input Asset.Material panelBackgroundMaterial {\"hint\":\"Optional: read the plus color from this material's baseColor (the main panel background)\"}"
+    - '// @input vec4 bgColor = {0.12,0.12,0.14,0.92} {"hint":"Plus background color (used if no panelBackgroundMaterial). RGBA"}'
+    - '// @input float bgScale = 14 {"hint":"World scale of the plus background mesh (tune to frame the keys)"}'
+    - '// @input float bgZ = 0.5 {"hint":"Local Z offset of the plus background (push behind the keys)"}'
+    - '// @input Asset.Texture plusTexture {"hint":"Texture: grey plus backplate (screen-space image behind the keys)"}'
+    - '// @input Asset.Material plusMaterial {"hint":"Transparent-unlit material (e.g. EmojiCool) — cloned for the plus backplate"}'
+    - '// @input float plusSize = 1.85 {"hint":"Screen-space size of the plus backplate (anchors, ~1.8 frames the keys)"}'
+    - '// @input Asset.Font keyFont {"hint":"Bold font for key labels (e.g. Poppins-Bold)"}'
+    - '// @input float keySize = 28 {"hint":"Font size for key labels"}'
+    - '// @input float colSpacing = 0.13 {"hint":"Horizontal spacing between columns (normalized, 0..1)"}'
+    - '// @input float rowSpacing = 0.17 {"hint":"Vertical spacing between rows (normalized, 0..1)"}'
+    - '// @input float sectionSpread = 0.62 {"hint":"Distance of side sections from center (normalized, 0..1)"}'

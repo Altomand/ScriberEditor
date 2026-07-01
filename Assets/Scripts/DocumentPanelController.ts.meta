@@ -1,0 +1,101 @@
+- !<AssetImportMetadata/1b71b7e2-3739-44e4-a712-339174055ab4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a52e50e7-b591-4640-929e-670e2af25715
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a52e50e7-b591-4640-929e-670e2af25715
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 08b4860a-eb7a-4b2b-b612-74b3bc72c904
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/08b4860a-eb7a-4b2b-b612-74b3bc72c904>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 381790a9-49f9-4427-8f47-3bb1b6827c64
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    allDocsList: false
+    allDocsViewRoot: false
+    bottomBar: false
+    docsList: false
+    docsTabButton: false
+    docsTabSelected: false
+    docsViewRoot: false
+    documentManager: false
+    editorTab: false
+    editorTabButton: false
+    editorTabSelected: false
+    editorViewRoot: false
+    focusNavigator: false
+    gearButton: false
+    inputMode: false
+    searchController: false
+    settings: false
+    settingsTabButton: false
+    settingsTabSelected: false
+    settingsViewRoot: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      docsList: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      searchController: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      editorTab: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      settings: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      focusNavigator: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      inputMode: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      allDocsList: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      editorViewRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      docsViewRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      allDocsViewRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      settingsViewRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      docsTabButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      editorTabButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      settingsTabButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      gearButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      docsTabSelected: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      editorTabSelected: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      settingsTabSelected: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      bottomBar: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType documentManager
+    - // @input AssignableType_1 docsList
+    - // @input AssignableType_2 searchController
+    - // @input AssignableType_3 editorTab
+    - // @input AssignableType_4 settings
+    - // @input AssignableType_5 focusNavigator
+    - // @input AssignableType_6 inputMode
+    - '// @input AssignableType_7 allDocsList {"hint":"All Docs list (a 2nd DocsListController with listMode = public)"}'
+    - // @input SceneObject editorViewRoot
+    - // @input SceneObject docsViewRoot
+    - // @input SceneObject allDocsViewRoot
+    - // @input SceneObject settingsViewRoot
+    - // @input SceneObject docsTabButton
+    - // @input SceneObject editorTabButton
+    - // @input SceneObject settingsTabButton
+    - // @input SceneObject gearButton
+    - // @input SceneObject docsTabSelected
+    - // @input SceneObject editorTabSelected
+    - // @input SceneObject settingsTabSelected
+    - '// @input SceneObject bottomBar {"hint":"My-Docs-only bottom bar (search/mic/New Doc)"}'

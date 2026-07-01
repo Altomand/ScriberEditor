@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/13d5ab71-4ae1-4b9a-8b78-298fcdea44a5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f0f8bcde-b6d7-4b3d-8edf-3b0ec996d769
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f0f8bcde-b6d7-4b3d-8edf-3b0ec996d769
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 526eb1f7-bb64-431b-a8a9-d7acee0bdb8e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/526eb1f7-bb64-431b-a8a9-d7acee0bdb8e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2488cfc1-1734-401c-bb2c-e74bbc348514
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    coolsTableName: false
+    forceUserId: false
+    supabaseProject: false
+    tableName: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      tableName: documents
+      coolsTableName: document_cools
+      forceUserId: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"Supabase Project asset (drag SupabaseProject Scriber here). Required — snapcloud authorizes by the referenced asset."}'
+    - '// @input string tableName = "documents" {"hint":"Documents table name"}'
+    - '// @input string coolsTableName = "document_cools" {"hint":"Per-(doc,user) cool rows table name"}'
+    - '// @input string forceUserId {"hint":"DEBUG: force a user id (simulate a second user). Empty = real snapcloud auth."}'

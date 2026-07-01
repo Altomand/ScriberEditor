@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/3ac7bbaf-348a-4455-aedd-9b3c639d73d1>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f4743f07-7a0c-41cf-8785-3d238f6dd38e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f4743f07-7a0c-41cf-8785-3d238f6dd38e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5035710a-48a9-4023-a252-b144a2ed6c03
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5035710a-48a9-4023-a252-b144a2ed6c03>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 88d1f18b-c21a-4076-acfd-9053c7bbb6d9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cardContainer: false
+    cardFont: false
+    cardFontSize: false
+    cardSpacing: false
+    deleteIconTex: false
+    docCardPrefab: false
+    docsScrollWindow: false
+    documentManager: false
+    listMode: false
+    maxVisibleCards: false
+    publicCardPrefab: false
+    uiTextureMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      docsScrollWindow: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      cardContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      docCardPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      listMode: mine
+      publicCardPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      deleteIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      cardFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      cardFontSize: !<float> 30.000000
+      cardSpacing: !<float> 8.000000
+      maxVisibleCards: !<float> 4.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType documentManager
+    - '// @input AssignableType_1 docsScrollWindow {"hint":"Optional ScrollWindow that holds the cards (cards still build without it)"}'
+    - '// @input SceneObject cardContainer {"hint":"Container SceneObject (scroll content) cards are built under"}'
+    - '// @input Asset.ObjectPrefab docCardPrefab {"hint":"Card prefab from bendConduit (e.g. UserCard). If set, cards use it; else a runtime text card."}'
+    - "// @input string listMode = \"mine\" {\"hint\":\"\\\"mine\\\" = the user's private docs; \\\"public\\\" = All Docs (every user's public docs + cool button)\"}"
+    - '// @input Asset.ObjectPrefab publicCardPrefab {"hint":"Cool-card prefab (CoolTileController) used when listMode = public"}'
+    - '// @input Asset.Material uiTextureMaterial {"hint":"Transparent-unlit UI material (e.g. EmojiCool) — cloned for the My Docs delete button"}'
+    - '// @input Asset.Texture deleteIconTex {"hint":"Texture: white X delete icon (My Docs cards)"}'
+    - '// @input Asset.Font cardFont {"hint":"Bold font for card titles"}'
+    - '// @input float cardFontSize = 30 {"hint":"Font size for card titles"}'
+    - '// @input float cardSpacing = 8 {"hint":"Vertical spacing between cards (local units)"}'
+    - '// @input float maxVisibleCards = 4 {"hint":"How many cards fit in the panel before the list scrolls (windowed scroll)"}'

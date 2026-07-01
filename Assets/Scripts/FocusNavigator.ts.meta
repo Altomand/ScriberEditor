@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/af0ca9d0-f444-4174-8d41-430a0b2c233a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 30381d8f-eb21-49a3-9303-2aeb29adac1a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 30381d8f-eb21-49a3-9303-2aeb29adac1a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8876445a-107b-42ff-8835-aef9b0560335
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8876445a-107b-42ff-8835-aef9b0560335>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f3ad44f8-ce17-4332-bdd4-35e75d28eea1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bleKeyboard: false
+    inputMode: false
+    moveCooldown: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bleKeyboard: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      inputMode: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      moveCooldown: 0.280000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType bleKeyboard
+    - // @input AssignableType_1 inputMode
+    - '// @input float moveCooldown = 0.28 {"hint":"Seconds between joystick-driven focus moves (debounce)"}'
