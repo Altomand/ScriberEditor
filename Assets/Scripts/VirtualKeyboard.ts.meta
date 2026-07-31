@@ -31,6 +31,7 @@
     bgScale: false
     bgZ: false
     bleKeyboard: false
+    clickable: false
     colSpacing: false
     keyFont: false
     keySize: false
@@ -52,6 +53,7 @@
   DefaultScriptInputs:
     - bleKeyboard: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       simulate: true
+      clickable: true
       backplateMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       panelBackgroundMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       bgColor: !<Vec4> {x: 0.120000, y: 0.120000, z: 0.140000, w: 0.920000}
@@ -71,6 +73,7 @@
   InputLines:
     - '// @input AssignableType bleKeyboard {"hint":"Scriber/BLE keyboard source for selection + commit events"}'
     - '// @input bool simulate = true {"hint":"Run an auto-demo in preview (no hardware needed)"}'
+    - '// @input bool clickable = true {"hint":"Make every key tappable: finger poke, hand-ray pinch, and the controller cursor all commit the key"}'
     - "// @input Asset.Material backplateMaterial {\"hint\":\"Material for the plus background mesh (an unlit material, e.g. the app's UIBox/flat material)\"}"
     - "// @input Asset.Material panelBackgroundMaterial {\"hint\":\"Optional: read the plus color from this material's baseColor (the main panel background)\"}"
     - '// @input vec4 bgColor = {0.12,0.12,0.14,0.92} {"hint":"Plus background color (used if no panelBackgroundMaterial). RGBA"}'

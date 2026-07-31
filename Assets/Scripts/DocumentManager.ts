@@ -79,6 +79,24 @@ export class DocumentManager extends BaseScriptComponent {
         return doc
     }
 
+    /**
+     * Open text fetched from an external source (e.g. a Google Drive .txt) as
+     * a fresh unsaved document. Like newDocument, it only persists locally on
+     * an explicit Save.
+     */
+    public openImported(body: string): DocumentRecord {
+        const now = Date.now()
+        const doc: DocumentRecord = {
+            id: makeDocId(now), user_id: "", title: deriveTitle(body),
+            body: body, created: now, updated: now, is_public: false,
+        }
+        this.current = doc
+        this.currentPersisted = false
+        this.dirty = true
+        this.onDocChangedEvent.invoke(doc)
+        return doc
+    }
+
     public openDocument(id: string): Promise<void> {
         const src = this.cloud() || this.local
         return src.load(id).then((doc) => {

@@ -29,7 +29,9 @@
     buttonParent: false
     docIconTex: false
     documentManager: false
+    drivePanel: false
     editor: false
+    googleDrive: false
     inputMode: false
     labelFont: false
     pillTex: false
@@ -47,6 +49,8 @@
     - documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       editor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       inputMode: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      googleDrive: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      drivePanel: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
       buttonParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       docIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
@@ -60,6 +64,8 @@
     - // @input AssignableType documentManager
     - // @input AssignableType_1 editor
     - // @input AssignableType_2 inputMode
+    - '// @input AssignableType_3 googleDrive {"hint":"Google Drive store (AuthKit OAuth + Drive REST). Unwired = Drive buttons show a config message."}'
+    - '// @input AssignableType_4 drivePanel {"hint":"Popup panel for Google sign-in / Drive file list / status"}'
     - '// @input SceneObject buttonParent {"hint":"Parent the round buttons are built under (the Editor view root)"}'
     - '// @input Asset.Material uiTextureMaterial {"hint":"Any transparent-unlit UI material (e.g. the EmojiCool material) — cloned per button, baseTex swapped"}'
     - '// @input Asset.Texture docIconTex {"hint":"Texture: white document icon (New Doc button)"}'

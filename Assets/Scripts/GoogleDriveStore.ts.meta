@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/7899cb68-30d5-4d8b-a5e9-45672777a928>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 09defe5a-a53b-4e38-aa24-dfff9baca35f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 09defe5a-a53b-4e38-aa24-dfff9baca35f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6260849c-ac28-4f79-86d2-a903fd1376c6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6260849c-ac28-4f79-86d2-a903fd1376c6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 116a9c87-3907-4596-a951-49486cebd6e1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    clientId: false
+    clientSecret: false
+    redirectUri: false
+    scopes: false
+    simulateInEditor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - clientId: ""
+      clientSecret: ""
+      redirectUri: ""
+      scopes: "https://www.googleapis.com/auth/drive"
+      simulateInEditor: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string clientId {"hint":"Google OAuth client id (from Google Cloud Console; iOS-type client)"}'
+    - '// @input string clientSecret {"hint":"Optional client secret (leave empty for iOS-type clients)"}'
+    - "// @input string redirectUri {\"hint\":\"Redirect URI registered with Google. Empty = AuthKit's default (.../unsecure, dev only). For release use com.snap.spectacles:/specslink/oauth2redirect/<LENS_ID>\"}"
+    - "// @input string scopes = \"https://www.googleapis.com/auth/drive\" {\"hint\":\"OAuth scopes. Full 'drive' lists all .txt files; 'drive.file' would only see files this lens created\"}"
+    - '// @input bool simulateInEditor = true {"hint":"In Lens Studio preview, fake sign-in and Drive files so the whole flow is testable (real auth needs Spectacles)"}'

@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/d2ce41a6-bae0-4953-a415-8d8467351fa6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4da45593-ccaa-4302-acf3-917c9754b800
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4da45593-ccaa-4302-acf3-917c9754b800
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d9430325-c326-40f7-b9cd-ad25846dff1c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d9430325-c326-40f7-b9cd-ad25846dff1c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: bdf76a25-3a06-459b-88a0-7e96eadb3191
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    labelFont: false
+    panelParent: false
+    pillTex: false
+    uiTextureMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      pillTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      labelFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject panelParent {"hint":"Parent the panel is built under (the Editor view root)"}'
+    - '// @input Asset.Material uiTextureMaterial {"hint":"Transparent-unlit UI material (e.g. EmojiCool) — cloned for panel images"}'
+    - '// @input Asset.Texture pillTex {"hint":"Pill texture used for the panel background and buttons"}'
+    - '// @input Asset.Font labelFont {"hint":"Font for panel text"}'

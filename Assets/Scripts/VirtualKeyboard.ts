@@ -14,6 +14,11 @@
 //
 // A built-in auto-demo (simulate=true) drives the whole thing in Lens Studio
 // preview with no hardware, by feeding synthetic packets into BleKeyboard.
+//
+// Keys are also directly tappable (clickable=true): each key carries a collider
+// + SIK Interactable (Direct/Indirect/Poke), so a finger tap, hand-ray pinch,
+// or controller cursor commits the key through the same synthetic-packet path
+// the demo uses — flash, audio, stats, and typing all behave like hardware.
 
 import {BleKeyboard} from "./BleKeyboard"
 import {
@@ -21,6 +26,8 @@ import {
     cellLabel, SelectionData, CommitData,
 } from "./KeyboardLayout"
 import {applySavedSwaps} from "./LayoutOverrides"
+
+const Interactable = require("SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable").Interactable
 
 interface KeyCell {
     section: Section;
@@ -30,6 +37,7 @@ interface KeyCell {
     color: vec4;        // current displayed color (animated)
     target: vec4;       // desired color this frame
     flashUntil: number; // getTime() seconds; >0 means flashing
+    hovered: boolean;   // an interactor (finger/cursor) is over this key
 }
 
 @component
@@ -42,6 +50,10 @@ export class VirtualKeyboard extends BaseScriptComponent {
     @input
     @hint("Run an auto-demo in preview (no hardware needed)")
     simulate: boolean = true
+
+    @input
+    @hint("Make every key tappable: finger poke, hand-ray pinch, and the controller cursor all commit the key")
+    clickable: boolean = true
 
     @input
     @allowUndefined
@@ -110,6 +122,7 @@ export class VirtualKeyboard extends BaseScriptComponent {
         section: Section.Center, row: 0, shiftPending: false, capsLock: false, heldButtons: 0,
     };
     private shiftedView: boolean = false;
+    private tapSeq: number = 0;
 
     onAwake() {
         this.createEvent("OnStartEvent").bind(() => this.init());
@@ -133,6 +146,17 @@ export class VirtualKeyboard extends BaseScriptComponent {
         }
 
         this.createEvent("UpdateEvent").bind(() => this.update());
+
+        // !== false: a scene serialized before this input existed reads
+        // undefined here; tap-to-type should still default ON.
+        if (this.clickable !== false) {
+            // Defer so the ScreenTransform layout has produced valid world
+            // positions before we measure the key pitch for the colliders
+            // (same settle-delay pattern as DocsListController's row hits).
+            const ev = this.createEvent("DelayedCallbackEvent");
+            ev.bind(() => this.installKeyInteraction());
+            ev.reset(0.2);
+        }
 
         if (this.simulate) {
             this.startDemo();
@@ -228,7 +252,7 @@ export class VirtualKeyboard extends BaseScriptComponent {
 
                     this.cells.push({
                         section, row, col, text, color,
-                        target: color, flashUntil: 0,
+                        target: color, flashUntil: 0, hovered: false,
                     });
                 }
             }
@@ -242,6 +266,90 @@ export class VirtualKeyboard extends BaseScriptComponent {
             const def = LAYOUT[cell.section][cell.row][cell.col];
             cell.text.text = cellLabel(def, this.shiftedView);
         }
+    }
+
+    // --- tap-to-type -------------------------------------------------------
+    // Every key gets a collider + SIK Interactable (targeting mode 7 = Direct +
+    // Indirect + Poke) so a finger tap, a hand-ray pinch, or the controller
+    // cursor all commit the key. The keys only exist while EditorViewRoot is
+    // active, which is also the only TYPING-mode view, so taps can't leak into
+    // focus-ring navigation.
+    private installKeyInteraction() {
+        print("VirtualKeyboard: installKeyInteraction (" + this.cells.length + " cells)");
+        if (this.cells.length <= COLS) return;
+        // The key ScreenTransform rects are anchor-positioned with meaningless
+        // offset sizes, so measure the real key pitch from the world distance
+        // between adjacent key centers instead.
+        const objAt = (i: number) => this.cells[i].text.getSceneObject();
+        const p00 = objAt(0).getTransform().getWorldPosition();
+        const dx = objAt(1).getTransform().getWorldPosition().distance(p00);
+        const dy = objAt(COLS).getTransform().getWorldPosition().distance(p00);
+        print("VirtualKeyboard: measured pitch " + dx + " x " + dy);
+        if (dx < 0.001 || dy < 0.001) {
+            print("VirtualKeyboard: key pitch degenerate (" + dx + "x" + dy + "); no key colliders.");
+            return;
+        }
+        let installed = 0;
+        for (const cell of this.cells) {
+            try {
+                const obj = cell.text.getSceneObject();
+                const ws = obj.getTransform().getWorldScale();
+                const sx = ws.x > 0.001 ? ws.x : 1;
+                const sy = ws.y > 0.001 ? ws.y : 1;
+                const collider = obj.createComponent("Physics.ColliderComponent") as any;
+                const box = Shape.createBoxShape();
+                // 0.95: leave a sliver between neighbouring key colliders.
+                box.size = new vec3((dx / sx) * 0.95, (dy / sy) * 0.95, dy / sy);
+                collider.shape = box;
+                collider.fitVisual = false;
+                const inter: any = obj.createComponent(Interactable.getTypeName());
+                inter.targetingMode = 7;   // Direct | Indirect | Poke
+                inter.onTriggerEnd.add(() => this.tapKey(cell));
+                if (inter.onHoverEnter && inter.onHoverEnter.add) {
+                    inter.onHoverEnter.add(() => { cell.hovered = true; });
+                }
+                if (inter.onHoverExit && inter.onHoverExit.add) {
+                    inter.onHoverExit.add(() => { cell.hovered = false; });
+                }
+                installed++;
+            } catch (e) {
+                print("VirtualKeyboard: key interactable failed: " + e);
+            }
+        }
+        print("VirtualKeyboard: tap-to-type on " + installed + " keys (pitch "
+            + dx.toFixed(2) + "x" + dy.toFixed(2) + ").");
+    }
+
+    // Synthesize the exact commit packet the firmware would send, so a tapped
+    // key drives the same pipeline as a chorded one: onCommit flashes the key,
+    // onKeypress types into the document, plays audio, updates stats.
+    private tapKey(cell: KeyCell) {
+        if (!this.bleKeyboard) return;
+        const def = LAYOUT[cell.section][cell.row][cell.col];
+        const shifted = this.selection.shiftPending || this.selection.capsLock;
+        let payload = 0;
+        if (def.action === Action.Insert) {
+            const label = shifted ? def.shift : def.base;
+            payload = label.charCodeAt(0);
+        } else if (def.action === Action.Emoji && def.emoji) {
+            payload = def.emoji;
+        }
+        this.bleKeyboard.injectCommitBytes(new Uint8Array([
+            cell.section, cell.row, cell.col, def.action,
+            shifted ? 1 : 0, payload, this.tapSeq++ & 0xFF, 0,
+        ]));
+        // Mirror the firmware's shift bookkeeping, then publish the new state
+        // so the shifted-layer labels and the section/row highlight follow.
+        if (def.action === Action.Shift) {
+            this.selection.shiftPending = !this.selection.shiftPending;
+        } else if (def.action === Action.CapsToggle) {
+            this.selection.capsLock = !this.selection.capsLock;
+        } else {
+            this.selection.shiftPending = false;
+        }
+        const flags =
+            (this.selection.shiftPending ? 1 : 0) | (this.selection.capsLock ? 2 : 0);
+        this.bleKeyboard.injectStateBytes(new Uint8Array([cell.section, cell.row, flags, 0]));
     }
 
     // --- event handlers ----------------------------------------------------
@@ -290,6 +398,8 @@ export class VirtualKeyboard extends BaseScriptComponent {
                     target = this.SECTION;
                 }
             }
+            // A finger/cursor hovering a key reads like a held button.
+            if (cell.hovered) target = this.KEY;
             cell.target = target;
 
             if (cell.flashUntil > now) {

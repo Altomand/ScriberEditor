@@ -2164,21 +2164,6 @@
     []
   Components:
     - !<own> 768d9e82-5454-4f12-a4fc-18853f16778d
-- !<SceneObject/2e9bc178-9cd6-447c-b4b6-b22e1e3e64b6>
-  PrefabRemaps:
-    []
-  Name: QueryTextField
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -17.700001, z: 0.010000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 9f98a043-8d50-4d46-a40b-c95afae2e285
 - !<SceneObject/2eda82c4-d764-497d-8568-94e4162f5c63>
   PrefabRemaps:
     []
@@ -3157,6 +3142,7 @@
     - !<own> 9a705b31-ff79-4c73-b1ce-0239fd92300b
     - !<own> 7ba5b2db-c082-4b42-9a7a-9d328e3e768c
     - !<own> 3ee511d3-7d44-489b-bd52-6d4e646fc0c6
+    - !<own> 7cb0df1c-932c-41f5-8635-ceed0fd7f4d0
 - !<ScriptComponent/3fc221f8-a623-4511-8655-4e07e5d91e4a>
   PrefabRemaps:
     []
@@ -3486,6 +3472,7 @@
   Enabled: true
   ScriptAsset: !<reference> c00d7e28-3319-4a3e-b5da-8ccdda312e7b
   ScriptInputsDefault:
+    clickable: true
     panelBackgroundMaterial: true
     bgColor: true
     bgScale: true
@@ -3500,6 +3487,7 @@
     "":
       bleKeyboard: !<MappingBased.AssignableType> e3de496e-6128-4254-bcf2-56c8b53713e7
       simulate: false
+      clickable: true
       backplateMaterial: !<reference.Material> d045eb6a-7336-4d41-a8d4-fd08687aa897
       panelBackgroundMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       bgColor: !<Vec4> {x: 0.120000, y: 0.120000, z: 0.140000, w: 0.920000}
@@ -3563,25 +3551,6 @@
     []
   Components:
     - !<own> 30a2ebbe-f4a8-4f5f-83e6-d1ad77ab57b2
-- !<Image/48feff09-b7ac-44b4-97c1-bf2606807c22>
-  PrefabRemaps:
-    []
-  Name: Image
-  Enabled: true
-  RenderOrder: 5
-  StretchMode: Fit
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> 3911b998-12f1-40bc-aef5-4520ad630d7e
-  FlipX: false
-  FlipY: false
-  RotationAngle: 0
-  Pivot: {x: 0.000000, y: 0.000000}
-  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
 - !<SceneObject/493c40a3-8ff5-40ad-9428-a22528800fab>
   PrefabRemaps:
     []
@@ -3892,6 +3861,28 @@
     - !<own> 04680613-1dd0-429b-8c30-1daab9a7fdc8
   Components:
     []
+- !<ScriptComponent/50a0b748-aa0a-4b96-b244-73924c4c5291>
+  PrefabRemaps:
+    []
+  Name: GoogleDriveStore
+  Enabled: true
+  ScriptAsset: !<reference> 09defe5a-a53b-4e38-aa24-dfff9baca35f
+  ScriptInputsDefault:
+    clientSecret: true
+    scopes: true
+    simulateInEditor: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      clientId: ""
+      clientSecret: ""
+      redirectUri: "com.snap.spectacles:/specslink/oauth2redirect/7674f20d-a493-430c-93c9-5f99ec0b5d4b"
+      scopes: "https://www.googleapis.com/auth/drive"
+      simulateInEditor: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/511e4ddd-6e01-43a9-962a-25d8f0071c2c>
   PrefabRemaps:
     []
@@ -4028,51 +4019,6 @@
     - !<own> 73552c6e-481b-44cc-b447-b8e95085021c
   Components:
     []
-- !<ScriptComponent/548dac88-67c2-4f7b-841f-a248b571d330>
-  PrefabRemaps:
-    []
-  Name: CapsuleButton
-  Enabled: true
-  ScriptAsset: !<reference> a60d3b86-0a33-458b-8e5a-daaeb2d7266a
-  ScriptInputsDefault:
-    _renderOrder: true
-    _inactive: true
-    _playAudio: true
-    _style: true
-    _hasShadow: true
-    _shadowPositionOffset: true
-    _toggleable: true
-    _defaultToOn: true
-    addCallbacks: true
-    triggerUpCallbacks: true
-    triggerDownCallbacks: true
-    onValueChangeCallbacks: true
-    onFinishedCallbacks: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _renderOrder: 0
-      _inactive: false
-      _playAudio: false
-      _style: PrimaryNeutral
-      _hasShadow: false
-      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
-      _toggleable: false
-      _defaultToOn: false
-      addCallbacks: false
-      triggerUpCallbacks:
-        []
-      triggerDownCallbacks:
-        []
-      onValueChangeCallbacks:
-        []
-      onFinishedCallbacks:
-        []
-      _size: !<Vec3> {x: 7.000000, y: 3.000000, z: 1.000000}
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/5534261e-3a46-42ae-ad58-039c6c5a0289>
   PrefabRemaps:
     []
@@ -6417,6 +6363,25 @@
     []
   Components:
     - !<own> 9b91ba42-073d-4832-aabb-ad7fdfaf3bd1
+- !<ScriptComponent/7cb0df1c-932c-41f5-8635-ceed0fd7f4d0>
+  PrefabRemaps:
+    []
+  Name: GoogleDrivePanel
+  Enabled: true
+  ScriptAsset: !<reference> 4da45593-ccaa-4302-acf3-917c9754b800
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      panelParent: !<reference.SceneObject> 0667d84f-5d64-4438-909f-0d4ee48bef45
+      uiTextureMaterial: !<reference.Material> ce100000-0000-4000-8000-000000000001
+      pillTex: !<reference.Texture> 12cdab18-c8d7-4179-afdd-0b5e96ca4a27
+      labelFont: !<reference.Font> 79c858c5-0e97-498b-b5e9-514efe043e6f
+  ScriptTypes:
+    "":
+      {}
 - !<Image/7cb6d17c-5118-4874-b4d2-398bad6362b5>
   PrefabRemaps:
     []
@@ -7358,7 +7323,6 @@
     - !<own> 0667d84f-5d64-4438-909f-0d4ee48bef45
     - !<own> 5a0a56ba-b886-4fd5-9fa4-94324af1d3f8
     - !<own> 192a7506-8406-49ca-a2f2-d5171c3d3425
-    - !<own> d9dffe00-10ce-4111-a89c-eba2a071f277
   Components:
     - !<own> 925ab217-8d11-48ad-9dcb-29dcb5e604cc
 - !<ScreenTransform/8c709fce-6b4c-4fd1-9dfe-273560cd3b5a>
@@ -7438,22 +7402,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/8cc79f92-38b5-4253-8a20-6acb35e2d9e1>
-  PrefabRemaps:
-    []
-  Name: MicButton
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 13.000000, y: -17.700001, z: 0.010002}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    - !<own> d18bd78f-9d28-44aa-af07-5c5462c883c5
-    - !<own> d7ad1ff6-a6c0-4713-8202-437b19153c50
-  Components:
-    - !<own> 548dac88-67c2-4f7b-841f-a248b571d330
 - !<Text/8cd0400c-ded2-41d6-93c4-c0885c8aacf0>
   PrefabRemaps:
     []
@@ -7649,87 +7597,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<Text/8df71103-de2c-4263-ba56-6443c8672305>
-  PrefabRemaps:
-    []
-  Name: Text
-  Enabled: true
-  RenderOrder: 10
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Text: Mic
-  Editable: false
-  ShowEditingPreview: true
-  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
-  SizeToFit: false
-  FontSize: 48
-  Font: !<reference> 00000000-0000-0000-0000-000000000000
-  LayoutRect:
-    left: -7.500000
-    bottom: -2.250000
-    right: 7.500000
-    top: 2.250000
-  OverflowVertical: Overflow
-  OverflowHorizontal: Overflow
-  Fill: !<TextFill>
-    Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-    Texture: !<reference> 00000000-0000-0000-0000-000000000000
-    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-    TileCount: 5.000000
-    TileZone: Rect
-    TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
-  Outline: !<OutlineSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Size: 0.250000
-  Dropshadow: !<DropshadowSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    OffsetX: 0.250000
-    OffsetY: 0.250000
-  Background: !<BackgroundSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Margins:
-      left: 0.000000
-      bottom: 0.000000
-      right: 0.000000
-      top: 0.000000
-    CornerRadius: 0.000000
-  AdvancedLayout: !<TextAdvancedLayout>
-    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-    LetterSpacing: 0.000000
-    LineSpacing: 1.000000
-    CapitalizationOverride: None
-  DepthTest: false
-  TwoSided: false
 - !<SceneObject/8e88dc47-70b6-4cec-8da2-46ba8fec1143>
   PrefabRemaps:
     []
@@ -8752,56 +8619,6 @@
     - !<own> bf043b5d-fa7a-486e-8213-f172cf58d142
   Components:
     []
-- !<ScriptComponent/9f98a043-8d50-4d46-a40b-c95afae2e285>
-  PrefabRemaps:
-    []
-  Name: TextInputField
-  Enabled: true
-  ScriptAsset: !<reference> af79fabe-6fbd-46c3-8b98-0fd7b687282c
-  ScriptInputsDefault:
-    _renderOrder: true
-    _inactive: true
-    _playAudio: true
-    _hasShadow: true
-    _shadowPositionOffset: true
-    inputType: true
-    formatType: true
-    fontFamily: true
-    useIcon: true
-    icon: true
-    changeIconOnFocus: true
-    alternateIcon: true
-    contentRequiredOnDeactivate: true
-    addCallbacks: true
-    onTextChangedCallbacks: true
-    onKeyboardStateChangedCallbacks: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _renderOrder: 0
-      _size: !<Vec3> {x: 18.000000, y: 3.000000, z: 0.000000}
-      _inactive: false
-      _playAudio: false
-      _hasShadow: true
-      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
-      inputType: default
-      formatType: date
-      placeholderText: Query Text
-      fontFamily: !<reference.Font> 00000000-0000-0000-0000-000000000000
-      useIcon: false
-      icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
-      changeIconOnFocus: false
-      alternateIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
-      contentRequiredOnDeactivate: false
-      addCallbacks: false
-      onTextChangedCallbacks:
-        []
-      onKeyboardStateChangedCallbacks:
-        []
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/a00c62e7-0ddd-491c-b1cd-21dd0276094a>
   PrefabRemaps:
     []
@@ -9472,6 +9289,7 @@
     - !<own> 233c9e9e-20f5-49c9-ab38-6116084264db
     - !<own> 12c53ae7-e812-4e47-9d90-1b98af7c9876
     - !<own> 3474984e-68a0-4104-bdba-551e5fdaced9
+    - !<own> 50a0b748-aa0a-4b96-b244-73924c4c5291
 - !<ScriptComponent/ad130fac-86f7-4d19-a873-b99e8429e2f7>
   PrefabRemaps:
     []
@@ -9487,6 +9305,8 @@
       documentManager: !<MappingBased.AssignableType> 3474984e-68a0-4104-bdba-551e5fdaced9
       editor: !<MappingBased.AssignableType_1> 14ec3410-336f-4b34-997d-44b20e4af9f0
       inputMode: !<MappingBased.AssignableType_2> 233c9e9e-20f5-49c9-ab38-6116084264db
+      googleDrive: !<MappingBased.AssignableType_3> 50a0b748-aa0a-4b96-b244-73924c4c5291
+      drivePanel: !<MappingBased.AssignableType_4> 7cb0df1c-932c-41f5-8635-ceed0fd7f4d0
       buttonParent: !<reference.SceneObject> 0667d84f-5d64-4438-909f-0d4ee48bef45
       uiTextureMaterial: !<reference.Material> ce100000-0000-4000-8000-000000000001
       docIconTex: !<reference.Texture> 707bce7c-1e23-4d4e-9f57-08a04b903c84
@@ -11053,21 +10873,6 @@
     - !<own> c33dbe85-7452-4cb6-8360-ef384da576bc
   Components:
     []
-- !<SceneObject/d18bd78f-9d28-44aa-af07-5c5462c883c5>
-  PrefabRemaps:
-    []
-  Name: Object 0
-  Enabled: false
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 8df71103-de2c-4263-ba56-6443c8672305
 - !<Text/d1b50971-5cb1-4dc3-81e2-faeb3a95de35>
   PrefabRemaps:
     []
@@ -11797,21 +11602,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<SceneObject/d7ad1ff6-a6c0-4713-8202-437b19153c50>
-  PrefabRemaps:
-    []
-  Name: Mic Icon
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 2.000000, y: 2.000000, z: 2.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 48feff09-b7ac-44b4-97c1-bf2606807c22
 - !<ScriptComponent/d7ffed10-fbb0-4ed6-921f-1b08fa9170df>
   PrefabRemaps:
     []
@@ -12082,22 +11872,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/d9dffe00-10ce-4111-a89c-eba2a071f277>
-  PrefabRemaps:
-    []
-  Name: BottomBar
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    - !<own> 2e9bc178-9cd6-447c-b4b6-b22e1e3e64b6
-    - !<own> 8cc79f92-38b5-4253-8a20-6acb35e2d9e1
-  Components:
-    []
 - !<Skin/d9fb97eb-2de3-4ad1-92f4-42d9f8860291>
   PrefabRemaps:
     []
