@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/e6320c64-b431-444e-b523-3e51f3d3c7ac>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 97a50edf-8012-4023-916e-077d3c6df06e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 97a50edf-8012-4023-916e-077d3c6df06e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 57652646-eeac-4544-a568-119242a94798
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/57652646-eeac-4544-a568-119242a94798>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3e8bb769-1ce5-4a42-9f76-cdb88e1e4b41
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    branch: false
+    clientId: false
+    folder: false
+    repoName: false
+    repoOwner: false
+    scopes: false
+    simulateInEditor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - clientId: ""
+      scopes: repo
+      repoOwner: ""
+      repoName: ""
+      branch: ""
+      folder: ""
+      simulateInEditor: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input string clientId {\"hint\":\"GitHub OAuth App client id (Developer settings → OAuth Apps; 'Enable Device Flow' must be ticked)\"}"
+    - "// @input string scopes = \"repo\" {\"hint\":\"OAuth scope. 'repo' = private+public repos; 'public_repo' = public only\"}"
+    - "// @input string repoOwner {\"hint\":\"Optional override: repo owner (user/org). Empty = the signed-in user's own account\"}"
+    - "// @input string repoName = \"ScriberEditor-Docs\" {\"hint\":\"Repo the .txt documents live in. Auto-created (private) in the user's account on first save if missing\"}"
+    - "// @input string branch {\"hint\":\"Branch to read/write (empty = the repo's default branch)\"}"
+    - '// @input string folder {"hint":"Folder inside the repo for documents (empty = repo root)"}'
+    - '// @input bool simulateInEditor = true {"hint":"In Lens Studio preview, fake sign-in and files so the whole flow is testable"}'

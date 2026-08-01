@@ -30,6 +30,7 @@
     documentManager: false
     editor: false
     inputMode: false
+    titleField: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -43,6 +44,7 @@
       editor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       documentManager: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       inputMode: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      titleField: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -51,3 +53,4 @@
     - '// @input AssignableType_1 editor {"hint":"ScrollableTextEditor view component"}'
     - '// @input AssignableType_2 documentManager {"hint":"DocumentManager that owns the current document buffer"}'
     - '// @input AssignableType_3 inputMode {"hint":"InputModeManager. Keypresses are only applied while in TYPING mode."}'
+    - '// @input AssignableType_4 titleField {"hint":"Title field: while it is selected, keypresses edit the title instead of the body"}'

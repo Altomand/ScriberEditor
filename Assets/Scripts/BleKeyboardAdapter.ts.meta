@@ -29,7 +29,6 @@
     audioToggle: false
     batteryLevelText: false
     bleKeyboard: false
-    chatWindowText: false
     connectedBluetoothObj: false
     keyboardNameText: false
     keypressAudio: false
@@ -50,7 +49,6 @@
       connectedBluetoothObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       scanningBluetoothObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       keyboardNameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      chatWindowText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       keypressCountText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       wpmText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       wordCountText: !<reference.Text> 00000000-0000-0000-0000-000000000000
@@ -66,8 +64,6 @@
     - // @input SceneObject connectedBluetoothObj
     - // @input SceneObject scanningBluetoothObj
     - // @input Component.Text keyboardNameText
-    - '// @ui {"widget":"separator"}'
-    - '// @input Component.Text chatWindowText {"hint":"Text component to display typed keypresses"}'
     - '// @ui {"widget":"separator"}'
     - '// @input Component.Text keypressCountText {"hint":"Displays total keypress count"}'
     - '// @input Component.Text wpmText {"hint":"Displays words per minute"}'

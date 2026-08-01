@@ -110,10 +110,12 @@ export class VirtualKeyboard extends BaseScriptComponent {
     @hint("Distance of side sections from center (normalized, 0..1)")
     sectionSpread: number = 0.62
 
-    // Colors — keys use the same green as the typed text; brightness shows state.
-    private readonly DIM = new vec4(0.0, 0.78, 0.0, 1.0);       // base (typed-text green, dimmed)
-    private readonly SECTION = new vec4(0.30, 0.95, 0.30, 1.0); // active section
-    private readonly ROW = new vec4(0.70, 1.0, 0.70, 1.0);      // active row (candidates)
+    // Colors — the resting keys use the exact editor-text green (same as the
+    // "start typing" hint), so unhighlighted labels read as one style with
+    // the document text; highlight states climb in brightness from there.
+    private readonly DIM = new vec4(0.556, 0.979, 0.0, 1.0);    // base (editor green)
+    private readonly SECTION = new vec4(0.78, 1.0, 0.45, 1.0);  // active section
+    private readonly ROW = new vec4(0.92, 1.0, 0.75, 1.0);      // active row (candidates)
     private readonly KEY = new vec4(1.0, 1.0, 0.85, 1.0);       // held key
     private readonly FLASH = new vec4(1.0, 1.0, 1.0, 1.0);      // committed (white pop)
 
@@ -197,6 +199,10 @@ export class VirtualKeyboard extends BaseScriptComponent {
             const img = obj.createComponent("Component.Image") as any;
             const m = this.plusMaterial.clone();
             m.mainPass.baseTex = this.plusTexture;
+            // Match the round icon buttons' disc exactly: icon_newdoc's circle
+            // is RGBA(50,53,60,175) and kbd_plus is RGBA(88,94,105,240), so
+            // multiply by their ratio (color and alpha) to render identically.
+            try { m.mainPass.baseColor = new vec4(0.568, 0.564, 0.571, 0.729); } catch (e) {}
             img.mainMaterial = m;
             img.renderOrder = 0;   // behind the keys (keys render at order 2)
             print("VirtualKeyboard: built plus background (screen-space).");

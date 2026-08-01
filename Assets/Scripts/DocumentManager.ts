@@ -2,8 +2,10 @@
 // Licensed under the MIT License. See LICENSE.md in the project root.
 //
 // Central owner of "which document is open and its buffer". Replaces
-// JournalController's single-buffer role (org-heading + autosave logic moved
-// here). Persists to a local store always; mirrors to a cloud store when wired.
+// JournalController's single-buffer role (autosave logic moved here). New
+// documents start blank with an editable title (the title field sets it via
+// setTitle). Persists to a local store always; mirrors to a cloud store when
+// wired.
 
 import Event from "./Event"
 import {DocumentRecord, DocumentStore, deriveTitle, makeDocId} from "./DocumentTypes"
@@ -26,16 +28,8 @@ export class DocumentManager extends BaseScriptComponent {
     autosaveDelay: number = 1.5
 
     @input
-    @hint("Heading title for new documents (org-mode '* ' headline)")
-    sessionHeading: string = "Note"
-
-    @input
-    @hint("Org-mode tags for new headings, colon-delimited without surrounding colons")
-    sessionTags: string = "skywriterble"
-
-    @input
-    @hint("Optional timezone override; empty uses the device UTC offset")
-    timezone: string = ""
+    @hint("Title given to freshly created documents (editable in the title field)")
+    defaultTitle: string = "Doc Title"
 
     private local: LocalDocumentStore
     private current: DocumentRecord | null = null
@@ -68,8 +62,9 @@ export class DocumentManager extends BaseScriptComponent {
     public newDocument(): DocumentRecord {
         const now = Date.now()
         const doc: DocumentRecord = {
-            id: makeDocId(now), user_id: "", title: "Untitled",
-            body: this.buildSessionHeading(), created: now, updated: now,
+            id: makeDocId(now), user_id: "",
+            title: this.defaultTitle || "Doc Title",
+            body: "", created: now, updated: now,
             is_public: false,
         }
         this.current = doc
@@ -79,15 +74,23 @@ export class DocumentManager extends BaseScriptComponent {
         return doc
     }
 
+    /** Set the current document's title (from the title field). */
+    public setTitle(title: string): void {
+        if (!this.current) this.newDocument()
+        this.current.title = title
+        this.markDirty()
+    }
+
     /**
      * Open text fetched from an external source (e.g. a Google Drive .txt) as
      * a fresh unsaved document. Like newDocument, it only persists locally on
      * an explicit Save.
      */
-    public openImported(body: string): DocumentRecord {
+    public openImported(body: string, title?: string): DocumentRecord {
         const now = Date.now()
         const doc: DocumentRecord = {
-            id: makeDocId(now), user_id: "", title: deriveTitle(body),
+            id: makeDocId(now), user_id: "",
+            title: (title && title.trim().length > 0) ? title.trim() : deriveTitle(body),
             body: body, created: now, updated: now, is_public: false,
         }
         this.current = doc
@@ -174,7 +177,11 @@ export class DocumentManager extends BaseScriptComponent {
      */
     public saveCurrent(isPublic?: boolean): Promise<void> {
         if (!this.current) return Promise.resolve()
-        this.current.title = deriveTitle(this.current.body)
+        // The title comes from the title field; only fall back to deriving it
+        // from the body for docs that somehow have none.
+        if (!this.current.title || this.current.title.trim().length === 0) {
+            this.current.title = deriveTitle(this.current.body)
+        }
         this.current.updated = Date.now()
         if (isPublic !== undefined) this.current.is_public = isPublic
         else this.current.is_public = !!this.current.is_public
@@ -211,39 +218,4 @@ export class DocumentManager extends BaseScriptComponent {
         this.saveCurrent()
     }
 
-    // --- org-mode heading (moved from JournalController) -------------------
-    private buildSessionHeading(): string {
-        const tz = this.effectiveTimezone()
-        const ts = this.formatOrgTimestamp(Date.now(), tz)
-        const tags = this.sessionTags ? " :" + this.sessionTags + ":" : ""
-        const lines: string[] = []
-        lines.push("* " + this.sessionHeading + tags)
-        lines.push("  " + ts)
-        lines.push("  :PROPERTIES:")
-        lines.push("  :TZ: " + tz)
-        lines.push("  :DEVICE: spectacles")
-        lines.push("  :END:")
-        lines.push("")
-        return lines.join("\n")
-    }
-
-    private formatOrgTimestamp(ms: number, tz: string): string {
-        const d = new Date(ms)
-        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        const pad = (n: number) => (n < 10 ? "0" + n : "" + n)
-        const date = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate())
-        const day = dayNames[d.getDay()]
-        const time = pad(d.getHours()) + ":" + pad(d.getMinutes())
-        const tzPart = tz ? " " + tz : ""
-        return "[" + date + " " + day + " " + time + tzPart + "]"
-    }
-
-    private effectiveTimezone(): string {
-        if (this.timezone && this.timezone.length > 0) return this.timezone
-        const offsetMin = -new Date().getTimezoneOffset()
-        const sign = offsetMin >= 0 ? "+" : "-"
-        const abs = Math.abs(offsetMin)
-        const pad = (n: number) => (n < 10 ? "0" + n : "" + n)
-        return sign + pad(Math.floor(abs / 60)) + pad(abs % 60)
-    }
 }

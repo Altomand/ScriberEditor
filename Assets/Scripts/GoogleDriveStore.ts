@@ -27,14 +27,14 @@ const OAuth2 = require("AuthKit.lspkg/Core/OAuth2").OAuth2
 // it before every Drive/AuthKit operation that builds fetch Requests.
 const NATIVE_REQUEST: any = (globalThis as any).Request
 
-function ensureNativeRequest(): void {
+export function ensureNativeRequest(): void {
     if (NATIVE_REQUEST && (globalThis as any).Request !== NATIVE_REQUEST) {
         (globalThis as any).Request = NATIVE_REQUEST
     }
 }
 
 // Last-resort guard: if a polyfill Request still sneaks through, convert it.
-function toNative(req: any): any {
+export function toNative(req: any): any {
     return (req && typeof req.toLensStudioRequest === "function")
         ? req.toLensStudioRequest() : req
 }

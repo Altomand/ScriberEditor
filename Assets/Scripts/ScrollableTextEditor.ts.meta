@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    boldFont: false
     cursorBlinkInterval: false
     cursorChar: false
     cursorOffChar: false
@@ -39,6 +40,7 @@
     scrollContentTransform: false
     scrollView: false
     scrollWindow: false
+    topInset: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -54,6 +56,8 @@
       scrollContentTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
       lineHeight: 1.500000
       maxLineWidth: !<float> 45.000000
+      topInset: !<float> 5.000000
+      boldFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
       cursorChar: █
       cursorOffChar: ▒
       cursorBlinkInterval: 0.500000
@@ -72,6 +76,8 @@
     - '// @input Component.ScreenTransform scrollContentTransform {"hint":"LEGACY: ScreenTransform of the SIK scroll content wrapper. Used only with scrollView."}'
     - '// @input float lineHeight = 1.5 {"hint":"Line height in local units for scroll calculation (SIK path only)"}'
     - '// @input float maxLineWidth = 45 {"hint":"Max characters per line before wrapping"}'
+    - "// @input float topInset = 3 {\"hint\":\"Lower the editor text's top edge by this many units so the first line starts below the tab bar\"}"
+    - '// @input Asset.Font boldFont {"hint":"Bold font for the editor text (e.g. Poppins-Bold) — waveguide legibility"}'
     - '// @input string cursorChar = "█" {"hint":"Cursor character when visible. Common: █ (block), ▮ (filled rect), | (line), _ (underscore)"}'
     - "// @input string cursorOffChar = \"▒\" {\"hint\":\"Cursor character when blinked off. MUST be same rendered width as cursorChar to avoid wrap-bounce. Try ▒ or ░ for a pulsing block cursor; ▯ for hollow-rect blink; or '' (empty) to keep cursor solid (no blink).\"}"
     - '// @input float cursorBlinkInterval = 0.5 {"hint":"Cursor blink interval in seconds"}'

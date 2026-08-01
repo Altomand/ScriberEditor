@@ -8,7 +8,7 @@ authenticated with Snap's [Auth Kit](https://developers.snap.com/spectacles/spec
 
 - **Save → Drive** — the Save button now opens three pills: `All Docs`,
   `My Docs`, and `Drive`. Picking `Drive` uploads the current document as
-  `<title>.txt` (title derived from the first content line). Re-saving the
+  `<title>.txt` (title from the editable title field). Re-saving the
   same document updates the same Drive file instead of creating copies
   (the doc→file mapping persists under `drive:fileId:<docId>`).
 - **New Doc → From Drive** — the New Doc button now opens two pills:

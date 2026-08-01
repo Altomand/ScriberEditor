@@ -10,6 +10,7 @@ import {BleKeyboard, KeypressData} from "./BleKeyboard"
 import {ScrollableTextEditor} from "./ScrollableTextEditor"
 import {DocumentManager} from "./DocumentManager"
 import {InputModeManager} from "./InputModeManager"
+import {TitleField} from "./TitleField"
 
 @component
 export class JournalController extends BaseScriptComponent {
@@ -30,6 +31,11 @@ export class JournalController extends BaseScriptComponent {
     @hint("InputModeManager. Keypresses are only applied while in TYPING mode.")
     inputMode: InputModeManager
 
+    @input
+    @allowUndefined
+    @hint("Title field: while it is selected, keypresses edit the title instead of the body")
+    titleField: TitleField
+
     onAwake() {
         this.createEvent("OnStartEvent").bind(() => this.init())
     }
@@ -46,6 +52,11 @@ export class JournalController extends BaseScriptComponent {
         // While navigating UI, the FocusNavigator consumes Scriber input; only
         // type when explicitly in TYPING mode.
         if (this.inputMode && !this.inputMode.isTyping()) return
+        // A selected title field captures the keystrokes instead of the body.
+        if (this.titleField && this.titleField.isSelected()) {
+            this.titleField.applyKey(data.key)
+            return
+        }
         if (!this.documentManager) return
 
         const changed = this.documentManager.appendKey(data.key)

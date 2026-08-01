@@ -44,6 +44,7 @@ export class GoogleDrivePanel extends BaseScriptComponent {
     private titleText: any = null
     private statusText: any = null
     private signInGroup: SceneObject = null
+    private signInLabel: any = null
     private rowObjs: SceneObject[] = []
     private rowTexts: any[] = []
     private pageUpObj: SceneObject = null
@@ -80,10 +81,10 @@ export class GoogleDrivePanel extends BaseScriptComponent {
         // Swallow taps on the backdrop so they can't reach keys/buttons under it.
         this.installHit(bg, () => {}, 1, 1)
 
-        this.titleText = this.makeText(this.root, "Google Drive", 0, 11.5, 24,
+        this.titleText = this.makeText(this.root, "Google Drive", 0, 11.5, 26,
             new vec4(1, 1, 1, 1))
-        this.statusText = this.makeText(this.root, "", 0, 7.5, 17,
-            new vec4(0.85, 0.87, 0.92, 1))
+        this.statusText = this.makeText(this.root, "", 0, 7.5, 18,
+            new vec4(0.97, 0.98, 1, 1))
 
         // Sign-in pill (shown only in sign-in mode).
         this.signInGroup = global.scene.createSceneObject("signin")
@@ -93,7 +94,7 @@ export class GoogleDrivePanel extends BaseScriptComponent {
         pillBg.getTransform().setLocalPosition(new vec3(0, 0, 0.1))
         pillBg.getTransform().setLocalScale(new vec3(18, 5, 1))
         this.texImage(pillBg, this.pillTex, 11)
-        this.makeText(this.signInGroup, "Sign in with Google", 0, 0.2, 20,
+        this.signInLabel = this.makeText(this.signInGroup, "Sign in", 0, 0.2, 20,
             new vec4(1, 1, 1, 1))
         this.installHit(this.signInGroup, () => {
             if (this.onSignInCb) this.onSignInCb()
@@ -192,20 +193,25 @@ export class GoogleDrivePanel extends BaseScriptComponent {
     // --- modes --------------------------------------------------------------
 
     /** Sign-in prompt. `onSignIn` fires when the pill is tapped. */
-    public showSignIn(message: string, onSignIn: () => void): void {
+    public showSignIn(message: string, onSignIn: () => void,
+                      title: string = "Google Drive",
+                      buttonLabel: string = "Sign in with Google"): void {
         if (!this.root) return
         this.cancelAutoHide()
         this.mode = "signin"
         this.onSignInCb = onSignIn
         this.root.enabled = true
-        this.titleText.text = "Google Drive"
+        this.titleText.text = title
         this.statusText.text = message
+        if (this.signInLabel) this.signInLabel.text = buttonLabel
         this.signInGroup.enabled = true
         this.setRowsVisible(false)
     }
 
     /** Pageable .txt list. `onPick` fires with the tapped file. */
-    public showFiles(files: DriveFile[], onPick: (f: DriveFile) => void): void {
+    public showFiles(files: DriveFile[], onPick: (f: DriveFile) => void,
+                     title: string = "Open from Google Drive",
+                     emptyMessage: string = "No .txt files found"): void {
         if (!this.root) return
         this.cancelAutoHide()
         this.mode = "files"
@@ -213,9 +219,9 @@ export class GoogleDrivePanel extends BaseScriptComponent {
         this.onPickCb = onPick
         this.pageStart = 0
         this.root.enabled = true
-        this.titleText.text = "Open from Google Drive"
+        this.titleText.text = title
         this.statusText.text = files.length === 0
-            ? "No .txt files found in your Drive"
+            ? emptyMessage
             : "Tap a document to open it"
         this.signInGroup.enabled = false
         this.setRowsVisible(true)
@@ -223,12 +229,13 @@ export class GoogleDrivePanel extends BaseScriptComponent {
     }
 
     /** Transient status message; auto-hides after `autoHideSec` if given. */
-    public showStatus(message: string, autoHideSec: number = 0): void {
+    public showStatus(message: string, autoHideSec: number = 0,
+                      title: string = "Google Drive"): void {
         if (!this.root) return
         this.cancelAutoHide()
         this.mode = "status"
         this.root.enabled = true
-        this.titleText.text = "Google Drive"
+        this.titleText.text = title
         this.statusText.text = message
         this.signInGroup.enabled = false
         this.setRowsVisible(false)

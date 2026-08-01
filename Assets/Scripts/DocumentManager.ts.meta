@@ -28,9 +28,7 @@
   ScriptInputsHidden:
     autosaveDelay: false
     cloudStore: false
-    sessionHeading: false
-    sessionTags: false
-    timezone: false
+    defaultTitle: false
     useCloud: false
   ScriptTypesHidden:
     {}
@@ -44,9 +42,7 @@
     - cloudStore: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       useCloud: true
       autosaveDelay: 1.500000
-      sessionHeading: Note
-      sessionTags: skywriterble
-      timezone: ""
+      defaultTitle: New Document
   ScriptTypes:
     -
       {}
@@ -54,6 +50,4 @@
     - '// @input AssignableType cloudStore {"hint":"Optional CloudDocumentStore component (Supabase). If unset, local-only."}'
     - '// @input bool useCloud = true {"hint":"Save documents to the cloud store when available"}'
     - '// @input float autosaveDelay = 1.5 {"hint":"Seconds of idle before autosaving an already-saved document"}'
-    - "// @input string sessionHeading = \"Note\" {\"hint\":\"Heading title for new documents (org-mode '* ' headline)\"}"
-    - '// @input string sessionTags = "skywriterble" {"hint":"Org-mode tags for new headings, colon-delimited without surrounding colons"}'
-    - '// @input string timezone {"hint":"Optional timezone override; empty uses the device UTC offset"}'
+    - '// @input string defaultTitle = "Doc Title" {"hint":"Title given to freshly created documents (editable in the title field)"}'

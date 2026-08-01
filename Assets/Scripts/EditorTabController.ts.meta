@@ -29,11 +29,15 @@
     buttonParent: false
     docIconTex: false
     documentManager: false
+    driveIconTex: false
     drivePanel: false
     editor: false
+    github: false
+    githubIconTex: false
     googleDrive: false
     inputMode: false
     labelFont: false
+    pillPrefab: false
     pillTex: false
     saveIconTex: false
     uiTextureMaterial: false
@@ -50,12 +54,16 @@
       editor: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       inputMode: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       googleDrive: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
-      drivePanel: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      github: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      drivePanel: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      driveIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      githubIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       buttonParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       docIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       saveIconTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       pillTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      pillPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       labelFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
@@ -65,10 +73,14 @@
     - // @input AssignableType_1 editor
     - // @input AssignableType_2 inputMode
     - '// @input AssignableType_3 googleDrive {"hint":"Google Drive store (AuthKit OAuth + Drive REST). Unwired = Drive buttons show a config message."}'
-    - '// @input AssignableType_4 drivePanel {"hint":"Popup panel for Google sign-in / Drive file list / status"}'
+    - '// @input AssignableType_4 github {"hint":"GitHub store (device-flow OAuth + repo contents). Unwired = GitHub buttons show a config message."}'
+    - '// @input AssignableType_5 drivePanel {"hint":"Popup panel shared by the Drive and GitHub flows"}'
+    - '// @input Asset.Texture driveIconTex {"hint":"Texture: Google Drive icon (Drive save/open buttons)"}'
+    - '// @input Asset.Texture githubIconTex {"hint":"Texture: GitHub mark icon (GitHub save/open buttons)"}'
     - '// @input SceneObject buttonParent {"hint":"Parent the round buttons are built under (the Editor view root)"}'
     - '// @input Asset.Material uiTextureMaterial {"hint":"Any transparent-unlit UI material (e.g. the EmojiCool material) — cloned per button, baseTex swapped"}'
     - '// @input Asset.Texture docIconTex {"hint":"Texture: white document icon (New Doc button)"}'
     - '// @input Asset.Texture saveIconTex {"hint":"Texture: white save icon (Save button)"}'
     - '// @input Asset.Texture pillTex {"hint":"Texture: pill background for the All Docs / My Docs choice buttons"}'
+    - '// @input Asset.ObjectPrefab pillPrefab {"hint":"SUIK capsule-button prefab (DocButton) — choice pills render as real UIKit capsules, exactly the tab style"}'
     - '// @input Asset.Font labelFont {"hint":"Font for the choice button labels"}'

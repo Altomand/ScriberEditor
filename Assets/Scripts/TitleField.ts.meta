@@ -1,0 +1,74 @@
+- !<AssetImportMetadata/018c67d6-2259-4701-adaf-e712131d38de>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ee74527b-c7bb-492e-a598-30c09234c420
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ee74527b-c7bb-492e-a598-30c09234c420
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 131e441f-41d7-4495-ad4d-c3711d86ca47
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/131e441f-41d7-4495-ad4d-c3711d86ca47>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 88eb40b3-1790-492d-bd97-639f57d231a5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    deselectTapArea: false
+    documentManager: false
+    fieldH: false
+    fieldW: false
+    fieldX: false
+    fieldY: false
+    labelFont: false
+    panelParent: false
+    pillPrefab: false
+    pillTex: false
+    uiTextureMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      documentManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      uiTextureMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      pillTex: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      pillPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      labelFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fieldX: !<float> 40.000000
+      fieldY: !<float> 10.000000
+      fieldW: !<float> 22.000000
+      fieldH: !<float> 5.000000
+      deselectTapArea: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject panelParent {"hint":"Parent the field is built under (the Editor view root, so it hides with the view)"}'
+    - // @input AssignableType documentManager
+    - '// @input Asset.Material uiTextureMaterial {"hint":"Transparent-unlit UI material (e.g. EmojiCool) — cloned for the box and border"}'
+    - '// @input Asset.Texture pillTex {"hint":"Pill texture for the box background and the yellow selection border"}'
+    - '// @input Asset.ObjectPrefab pillPrefab {"hint":"SUIK capsule-button prefab (DocButton) — the box renders as a real UIKit capsule, exactly the tab style"}'
+    - '// @input Asset.Font labelFont {"hint":"Font for the title text"}'
+    - '// @input float fieldX = 25 {"hint":"Field center X (local units, just right of the editor window)"}'
+    - '// @input float fieldY = 10 {"hint":"Field center Y"}'
+    - '// @input float fieldW = 8 {"hint":"Field width (8x3 = the tab pill size)"}'
+    - '// @input float fieldH = 3 {"hint":"Field height"}'
+    - '// @input SceneObject deselectTapArea {"hint":"Tapping this object (the editor scroll area) deselects the title field, returning typing to the body"}'

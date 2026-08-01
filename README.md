@@ -39,6 +39,7 @@ ScriberEditor is a complete little word processor, not just a keystroke demo:
 - **Scrollable editor** — word wrap, blinking cursor, auto‑scroll to the caret, empty‑state hint.
 - **Live virtual keyboard** — an on‑screen mirror of the 60‑key layout that highlights the active section/row and flashes keys on commit. Every key is also **directly tappable** (finger poke, hand‑ray pinch, or controller cursor), so you can type without the Scriber too.
 - **Google Drive** — save any doc to Drive as a `.txt`, or open an existing Drive `.txt` from an in‑lens picker. Google sign‑in via Snap's Auth Kit (OAuth in the Spectacles App — see `docs/GOOGLE-DRIVE.md`).
+- **GitHub** — commit any doc as a `.txt` into a repo you configure, or open a repo `.txt` from the same picker. Sign‑in via GitHub's device flow (enter a short code on your phone — see `docs/GITHUB.md`).
 - **Auto‑save** — saved docs persist after ~1.5 s idle; new drafts save on demand with a private/public prompt.
 - **Hands‑light navigation** — a yellow focus ring moves between buttons and cards via the stick, activated by a button press or a pinch.
 - **Customizable** — swap keys live and adjust font size (24–52 pt) from Settings.
@@ -101,8 +102,10 @@ Assets/Scripts/
   LocalDocumentStore.ts   On-device persistence
   CloudDocumentStore.ts   Optional Supabase/snapcloud store (bring your own backend)
   DocsListController.ts, DocumentPanelController.ts, EditorTabController.ts   Docs UI + tabs
+  TitleField.ts           Editable doc-title box (virtual-keyboard input, no system keyboard)
   GoogleDriveStore.ts     AuthKit OAuth2 + Google Drive REST (save/list/download .txt)
-  GoogleDrivePanel.ts     Popup: Google sign-in, Drive file picker, status
+  GitHubStore.ts          GitHub device-flow OAuth + repo contents API (.txt save/open)
+  GoogleDrivePanel.ts     Shared popup: sign-in, file picker, status (Drive + GitHub)
   ScrollableTextEditor.ts, ScrollAdapter.ts   Scrolling text view
   SearchController.ts, SettingsController.ts, SimpleDropdown.ts, UiUtil.ts, Event.ts
 ```

@@ -24,12 +24,6 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
     @ui.separator
 
     @input
-    @hint("Text component to display typed keypresses")
-    chatWindowText: Text
-
-    @ui.separator
-
-    @input
     @hint("Displays total keypress count")
     keypressCountText: Text
 
@@ -57,9 +51,7 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
     audioToggle: any
 
     private audioEnabled: boolean = true;
-    private chatContent: string = "";
-    private maxChatLines: number = 20;
-    private maxLineLength: number = 40;
+    private chatContent: string = "";   // accumulated for word/WPM stats only
     private keypressCount: number = 0;
     private typingStartTime: number = 0;
 
@@ -79,9 +71,6 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
         this.bleKeyboard.onKeypress.add(this.onKeypress.bind(this));
         this.bleKeyboard.onBatteryLevel.add(this.onBatteryLevel.bind(this));
 
-        if (this.chatWindowText) {
-            this.chatWindowText.text = "Waiting for keyboard...";
-        }
         if (this.batteryLevelText) {
             this.batteryLevelText.text = "--";
         }
@@ -103,7 +92,6 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
         this.chatContent = "";
         this.keypressCount = 0;
         this.typingStartTime = 0;
-        this.updateChatDisplay();
         this.updateStats();
     }
 
@@ -128,19 +116,15 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
         }
 
         this.playKeypressSound();
-        this.updateChatDisplay();
         this.updateStats();
     }
 
-    private updateChatDisplay() {
-        if (!this.chatWindowText) return;
-
-        const lines = this.wrapText(this.chatContent, this.maxLineLength);
-        const visibleLines = lines.slice(-this.maxChatLines);
-        const display = visibleLines.join("\n") + "_";
-
-        this.chatWindowText.text = display;
-    }
+    // NOTE: the legacy chat-window mirror is gone. It used to write the raw
+    // accumulated keystrokes into a Text component every keypress — and that
+    // Text was the SAME one ScrollableTextEditor renders the document into,
+    // so the two writers raced on every key (visible once the title field
+    // routed keys away from the body). chatContent stays for the word/WPM
+    // stats only and is never rendered.
 
     private updateStats() {
         if (this.keypressCountText) {
@@ -186,25 +170,4 @@ export class BleKeyboardAdapter extends BaseScriptComponent {
         return trimmed.split(/\s+/).length;
     }
 
-    private wrapText(text: string, maxWidth: number): string[] {
-        const result: string[] = [];
-        const rawLines = text.split("\n");
-
-        for (const rawLine of rawLines) {
-            if (rawLine.length === 0) {
-                result.push("");
-                continue;
-            }
-            let remaining = rawLine;
-            while (remaining.length > maxWidth) {
-                let breakAt = remaining.lastIndexOf(" ", maxWidth);
-                if (breakAt <= 0) breakAt = maxWidth;
-                result.push(remaining.slice(0, breakAt));
-                remaining = remaining.slice(breakAt).trimStart();
-            }
-            result.push(remaining);
-        }
-
-        return result.length === 0 ? [""] : result;
-    }
 }

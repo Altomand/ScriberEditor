@@ -58,6 +58,15 @@ export class ScrollableTextEditor extends BaseScriptComponent {
     maxLineWidth: number = 45
 
     @input
+    @hint("Lower the editor text's top edge by this many units so the first line starts below the tab bar")
+    topInset: number = 3
+
+    @input
+    @allowUndefined
+    @hint("Bold font for the editor text (e.g. Poppins-Bold) — waveguide legibility")
+    boldFont: Font
+
+    @input
     @hint("Cursor character when visible. Common: █ (block), ▮ (filled rect), | (line), _ (underscore)")
     cursorChar: string = "█"
 
@@ -104,6 +113,8 @@ export class ScrollableTextEditor extends BaseScriptComponent {
             sikContentTransform: this.scrollContentTransform,
         })
         print("ScrollableTextEditor: scroll adapter = " + this.adapter.name)
+        this.applyTopInset()
+        this.applyBoldStyle()
 
         if (this.debugGrid) {
             this.content = this.buildDebugGrid()
@@ -130,6 +141,48 @@ export class ScrollableTextEditor extends BaseScriptComponent {
         this.deferredScrollEvent.bind(() => this.applyScrollTarget())
 
         this.renderText()
+    }
+
+    // Pull ONLY the editor Text's rect top down so the first line starts
+    // below the tab bar. The ScrollWindow viewport is left alone — resizing
+    // and shifting it also moves the scroller, so the offsets compound and
+    // the text ends up much lower than the inset (the "too low" bug).
+    private topInsetApplied: boolean = false
+    private applyTopInset(): void {
+        const inset = (typeof this.topInset === "number") ? this.topInset : 3
+        if (this.topInsetApplied || inset <= 0 || !this.editorText) return
+        try {
+            const tst = this.editorText.getSceneObject()
+                .getComponent("Component.ScreenTransform") as any
+            if (!tst) return
+            const a = tst.anchors
+            a.top = a.top - inset
+            tst.anchors = a
+            this.topInsetApplied = true
+            print("ScrollableTextEditor: applied top inset " + inset)
+        } catch (e) {
+            print("ScrollableTextEditor: top inset failed: " + e)
+        }
+    }
+
+    // Bold font + dark outline behind the glyphs: the Spectacles waveguide
+    // washes out thin/dim text, so give the editor the same treatment as the
+    // virtual keyboard labels.
+    private applyBoldStyle(): void {
+        if (!this.editorText) return
+        try {
+            const t: any = this.editorText
+            if (this.boldFont) t.font = this.boldFont
+            if (t.outlineSettings) {
+                t.outlineSettings.enabled = true
+                t.outlineSettings.size = 0.5
+                if (t.outlineSettings.fill) {
+                    t.outlineSettings.fill.color = new vec4(0, 0, 0, 1)
+                }
+            }
+        } catch (e) {
+            print("ScrollableTextEditor: bold style failed: " + e)
+        }
     }
 
     /**

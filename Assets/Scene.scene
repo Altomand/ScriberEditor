@@ -608,6 +608,7 @@
       editor: !<MappingBased.AssignableType_1> 14ec3410-336f-4b34-997d-44b20e4af9f0
       documentManager: !<MappingBased.AssignableType_2> 3474984e-68a0-4104-bdba-551e5fdaced9
       inputMode: !<MappingBased.AssignableType_3> 233c9e9e-20f5-49c9-ab38-6116084264db
+      titleField: !<MappingBased.AssignableType_4> 5d5087cc-dc12-4b25-9a82-5e98379a55d1
   ScriptTypes:
     "":
       {}
@@ -1177,6 +1178,8 @@
       scrollContentTransform: !<reference.ScreenTransform> 00000000-0000-0000-0000-000000000000
       lineHeight: !<float> 3.000000
       maxLineWidth: !<float> 45.000000
+      topInset: !<float> 3.000000
+      boldFont: !<reference.Font> 79c858c5-0e97-498b-b5e9-514efe043e6f
       cursorChar: █
       cursorOffChar: ▒
       cursorBlinkInterval: 0.500000
@@ -2459,9 +2462,6 @@
   ScriptInputsDefault:
     useCloud: true
     autosaveDelay: true
-    sessionHeading: true
-    sessionTags: true
-    timezone: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -2469,9 +2469,7 @@
       cloudStore: !<MappingBased.AssignableType> 12c53ae7-e812-4e47-9d90-1b98af7c9876
       useCloud: true
       autosaveDelay: 1.500000
-      sessionHeading: Note
-      sessionTags: skywriterble
-      timezone: ""
+      defaultTitle: Doc Title
   ScriptTypes:
     "":
       {}
@@ -3143,6 +3141,7 @@
     - !<own> 7ba5b2db-c082-4b42-9a7a-9d328e3e768c
     - !<own> 3ee511d3-7d44-489b-bd52-6d4e646fc0c6
     - !<own> 7cb0df1c-932c-41f5-8635-ceed0fd7f4d0
+    - !<own> 5d5087cc-dc12-4b25-9a82-5e98379a55d1
 - !<ScriptComponent/3fc221f8-a623-4511-8655-4e07e5d91e4a>
   PrefabRemaps:
     []
@@ -3644,6 +3643,33 @@
     - !<own> 18e146b2-b0ae-4bef-ae2b-61ed64f5ea81
   Components:
     - !<own> c3045033-550e-4e28-9717-ae10a16a09c5
+- !<ScriptComponent/4c9ecd4a-d906-4247-80d2-8599387ca56a>
+  PrefabRemaps:
+    []
+  Name: GitHubStore
+  Enabled: true
+  ScriptAsset: !<reference> 97a50edf-8012-4023-916e-077d3c6df06e
+  ScriptInputsDefault:
+    scopes: true
+    repoOwner: true
+    repoName: true
+    branch: true
+    folder: true
+    simulateInEditor: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      clientId: ""
+      scopes: repo
+      repoOwner: ""
+      repoName: ""
+      branch: ""
+      folder: ""
+      simulateInEditor: true
+  ScriptTypes:
+    "":
+      {}
 - !<Image/4d06b55c-3bed-43c6-aa79-123f117f8d00>
   PrefabRemaps:
     []
@@ -3979,7 +4005,6 @@
       connectedBluetoothObj: !<reference.SceneObject> 9b3f8ea1-636b-41c2-8cb2-1891e5ebdbd3
       scanningBluetoothObj: !<reference.SceneObject> ea77a1b5-f5d0-4819-9c3e-c14caad5bf64
       keyboardNameText: !<reference.Text> abe76def-ba01-4092-ba91-f3aeacdea822
-      chatWindowText: !<reference.Text> 69f86507-5a66-4c35-bfcd-5cd29f940e15
       keypressCountText: !<reference.Text> ff9a4b90-d7c0-46d7-bcb8-44d6455a3c53
       wpmText: !<reference.Text> a5a2c639-cd2d-461c-8767-0bec41c8d155
       wordCountText: !<reference.Text> 8fc29f14-1599-442d-abc2-90a8cff332a9
@@ -4384,6 +4409,32 @@
   ScriptInputs:
     "":
       enableSyncCursors: true
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/5d5087cc-dc12-4b25-9a82-5e98379a55d1>
+  PrefabRemaps:
+    []
+  Name: TitleField
+  Enabled: true
+  ScriptAsset: !<reference> ee74527b-c7bb-492e-a598-30c09234c420
+  ScriptInputsDefault:
+    fieldY: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      panelParent: !<reference.SceneObject> 0667d84f-5d64-4438-909f-0d4ee48bef45
+      documentManager: !<MappingBased.AssignableType> 3474984e-68a0-4104-bdba-551e5fdaced9
+      uiTextureMaterial: !<reference.Material> ce100000-0000-4000-8000-000000000001
+      pillTex: !<reference.Texture> 12cdab18-c8d7-4179-afdd-0b5e96ca4a27
+      pillPrefab: !<reference.ObjectPrefab> d9541d43-a585-473e-84d8-0443ca22e19f
+      labelFont: !<reference.Font> 79c858c5-0e97-498b-b5e9-514efe043e6f
+      fieldX: !<float> 25.000000
+      fieldY: !<float> 10.000000
+      fieldW: !<float> 8.000000
+      fieldH: !<float> 3.000000
+      deselectTapArea: !<reference.SceneObject> 0684e6d7-a756-4b17-b995-4ce9fe9248b0
   ScriptTypes:
     "":
       {}
@@ -9290,6 +9341,7 @@
     - !<own> 12c53ae7-e812-4e47-9d90-1b98af7c9876
     - !<own> 3474984e-68a0-4104-bdba-551e5fdaced9
     - !<own> 50a0b748-aa0a-4b96-b244-73924c4c5291
+    - !<own> 4c9ecd4a-d906-4247-80d2-8599387ca56a
 - !<ScriptComponent/ad130fac-86f7-4d19-a873-b99e8429e2f7>
   PrefabRemaps:
     []
@@ -9306,12 +9358,16 @@
       editor: !<MappingBased.AssignableType_1> 14ec3410-336f-4b34-997d-44b20e4af9f0
       inputMode: !<MappingBased.AssignableType_2> 233c9e9e-20f5-49c9-ab38-6116084264db
       googleDrive: !<MappingBased.AssignableType_3> 50a0b748-aa0a-4b96-b244-73924c4c5291
-      drivePanel: !<MappingBased.AssignableType_4> 7cb0df1c-932c-41f5-8635-ceed0fd7f4d0
+      github: !<MappingBased.AssignableType_4> 4c9ecd4a-d906-4247-80d2-8599387ca56a
+      drivePanel: !<MappingBased.AssignableType_5> 7cb0df1c-932c-41f5-8635-ceed0fd7f4d0
+      driveIconTex: !<reference.Texture> e77390ed-429e-48bf-b915-0a6dff239484
+      githubIconTex: !<reference.Texture> 915c799e-22f6-4db4-b56a-cda4c26c198e
       buttonParent: !<reference.SceneObject> 0667d84f-5d64-4438-909f-0d4ee48bef45
       uiTextureMaterial: !<reference.Material> ce100000-0000-4000-8000-000000000001
       docIconTex: !<reference.Texture> 707bce7c-1e23-4d4e-9f57-08a04b903c84
       saveIconTex: !<reference.Texture> a0e2827e-2cdb-4ea5-ad03-6609bb8748e3
       pillTex: !<reference.Texture> 12cdab18-c8d7-4179-afdd-0b5e96ca4a27
+      pillPrefab: !<reference.ObjectPrefab> d9541d43-a585-473e-84d8-0443ca22e19f
       labelFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
