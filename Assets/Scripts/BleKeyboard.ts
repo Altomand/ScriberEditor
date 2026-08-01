@@ -388,39 +388,62 @@ class KeyboardScanner {
         const matchName = this.deviceName || "Skywriter";
         print("Scanning for '" + matchName + "'...");
 
-        const scanFilter = new Bluetooth.ScanFilter();
-        const scanSettings = new Bluetooth.ScanSettings();
-        scanSettings.timeoutSeconds = 30;
-        scanSettings.scanMode = Bluetooth.ScanMode.LowPower;
+        // The Bluetooth API is experimental: available in dev runs (preview /
+        // Send to Spectacles with Experimental API on) but NOT in published
+        // lenses — where the `Bluetooth` namespace can still EXIST with its
+        // members stripped, so checking the namespace alone is not enough.
+        // Degrade gracefully in every failure mode: the tap keyboard and
+        // cloud features work without the Scriber controller.
+        const btAny: any = (typeof Bluetooth !== "undefined") ? Bluetooth : null;
+        if (!btAny || typeof btAny.ScanFilter !== "function"
+            || typeof btAny.ScanSettings !== "function" || !this.bluetoothModule) {
+            this.isScanning = false;
+            print("BleKeyboard: Bluetooth API unavailable (published build or module unwired). Running without the Scriber controller — tap-to-type still works.");
+            return;
+        }
 
-        this.bluetoothModule.startScan(
-            [scanFilter],
-            scanSettings,
-            (result) => {
-                const name = result.deviceName || "";
-                if (name === "") return;
+        try {
+            const scanFilter = new Bluetooth.ScanFilter();
+            const scanSettings = new Bluetooth.ScanSettings();
+            scanSettings.timeoutSeconds = 30;
+            scanSettings.scanMode = Bluetooth.ScanMode.LowPower;
 
-                if (this.targetAddress) {
-                    const addr = result.deviceAddress ? result.deviceAddress.toString() : "";
-                    if (addr === this.targetAddress) {
-                        print("Keyboard matched by address.");
+            this.bluetoothModule.startScan(
+                [scanFilter],
+                scanSettings,
+                (result) => {
+                    const name = result.deviceName || "";
+                    if (name === "") return;
+
+                    if (this.targetAddress) {
+                        const addr = result.deviceAddress ? result.deviceAddress.toString() : "";
+                        if (addr === this.targetAddress) {
+                            print("Keyboard matched by address.");
+                            this.stop();
+                            onDeviceFound(new KeyboardDevice(name, result.deviceAddress, this.bluetoothModule));
+                        }
+                        return;
+                    }
+
+                    if (name === matchName) {
+                        print("Keyboard found: '" + name + "'");
                         this.stop();
                         onDeviceFound(new KeyboardDevice(name, result.deviceAddress, this.bluetoothModule));
                     }
-                    return;
-                }
-
-                if (name === matchName) {
-                    print("Keyboard found: '" + name + "'");
-                    this.stop();
-                    onDeviceFound(new KeyboardDevice(name, result.deviceAddress, this.bluetoothModule));
-                }
-            });
+                });
+        } catch (e) {
+            this.isScanning = false;
+            print("BleKeyboard: Bluetooth scan failed (" + e + "). Running without the Scriber controller — tap-to-type still works.");
+        }
     }
 
     public stop() {
         if (!this.isScanning) return;
-        this.bluetoothModule.stopScan();
+        try {
+            this.bluetoothModule.stopScan();
+        } catch (e) {
+            print("BleKeyboard: stopScan failed: " + e);
+        }
         this.isScanning = false;
     }
 }
